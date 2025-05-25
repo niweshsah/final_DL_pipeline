@@ -5,7 +5,7 @@ import cv2
 import logging
 from seg_file_using_medsam_yolo import run_medsam_yolo_pipeline
 from masking_before_nnUnet import run_label_masking_pipeline
-
+from nnunet_inference import run_nnunet_inference
 # Setup logging
 logging.basicConfig(
     level=logging.INFO,
@@ -134,6 +134,7 @@ def process_all_cases(base_folder, output_folder="output-shuffled", axis=2):
         else:
             logging.warning(f"⚠️ Skipping {patient_folder}: Missing one or more required NIfTI files.")
 
+
 if __name__ == "__main__":
     # Modify this path according to your dataset location
     base_data_path = "/DATA/yolo_on_brain/shuffle_training_data"
@@ -150,10 +151,20 @@ if __name__ == "__main__":
         buffer_box=5
     )
     
-    # run_label_masking_pipeline(
-    #     image_folder="/home/teaching/output/Testing/images",
-    #     label_folder="/home/teaching/output/Testing/SegMed_threshold",
-    #     output_label_folder="/home/teaching/output/Testing/labels_threshold",
-    #     output_image_folder="/home/teaching/output/Testing/images_threshold"
-    # )
+    run_label_masking_pipeline(
+        image_folder="/home/teaching/output/Testing/images",
+        label_folder="/home/teaching/output/Testing/SegMed_threshold",
+        output_label_folder="/home/teaching/output/Testing/labels_threshold",
+        output_image_folder="/home/teaching/output/Testing/images_threshold"
+    )
+
+    run_nnunet_inference(
+        task_name_or_id="Task103_BratsGen",  # or use number like "101"
+        input_folder="/home/teaching/output/Testing/images_threshold",  # NIfTI files (.nii.gz) here
+        output_folder="/home/teaching/output/Testing/predicted",
+        model="3d_fullres",
+        folds="all",
+        device="cuda"
+    )
+
 

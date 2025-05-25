@@ -14,13 +14,15 @@ TumourGen/
 ├── dataset/                   # Datasets for training and inference
 ├── evaluation/                # Evaluation scripts for segmentation results
 ├── inference/
-│   ├── fast_inference.py      # Inference using precomputed intermediate files
-│   ├── full_final_inference.py# Complete inference from start to end
+│   ├── fast_test.py            # Inference using precomputed intermediate files
 │   ├── masking_before_nnUnet.py# Generate modalities from MedSAM+YOLO masks
-│   ├── rgb_stacking.py        # Stack T1ce, T2, and FLAIR as RGB images
+│   ├── nnunet_inference        # Inference using nnUnet
+│   ├── rgb_stacking.py         # Stack T1ce, T2, and FLAIR as RGB images
 │   └── seg_file_using_medsam.py# Segmentation using MedSAM + YOLO
+│   ├── test.py                 # Complete inference from start to end
 ├── training/
-│   ├── medsam_finetune/       # MedSAM fine-tuning files and script
+│   ├── medsam_finetune/        # MedSAM fine-tuning files and script
+│   └── nnUnet/                # nnUNet Training on Dataset
 │   └── yolo_finetune/         # YOLO preprocessing and fine-tuning
 ```
 
@@ -177,7 +179,7 @@ python test.py --root_dir /path/to/data/Test_Ped
 ### Evaluation
 
 ```bash
-python evaluate.py \
+python evaluation.py \
   -ref /path/to/data/labelsTs \
   -pred /path/to/output \
   -l 1 2 3
