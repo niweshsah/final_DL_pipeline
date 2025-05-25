@@ -33,13 +33,13 @@ def run_nnunet_inference(
     logging.info("Starting nnU-Net inference...")
     try:
         cmd = [
-            "nnUNetv2_predict",
+            "nnUNet_predict",
             "-i", input_folder,
             "-o", output_folder,
-            "-d", task_name_or_id,
+            "-t", task_name_or_id,
+            "-m", model,
             "-f", folds,
-            "-tr", model,
-            "--device", device
+            "--disable_tta"
         ]
 
         logging.info(f"Running command: {' '.join(cmd)}")
@@ -54,8 +54,8 @@ def run_nnunet_inference(
 if __name__ == "__main__":
     run_nnunet_inference(
         task_name_or_id="Task103_BratsGen",  # or use number like "101"
-        input_folder="/DATA/nnunet_inference/input",  # NIfTI files (.nii.gz) here
-        output_folder="/DATA/nnunet_inference/predicted",
+        input_folder="./Testing/images_new",  # NIfTI files (.nii.gz) here
+        output_folder="./final_output",
         model="3d_fullres",
         folds="all",
         device="cuda"
