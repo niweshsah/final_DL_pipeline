@@ -199,25 +199,7 @@ test_data/
 | **BraTS-SSA (Sub-Saharan)**    | [Download](https://www.kaggle.com/datasets/mrasiamah/brats2023-ssa)                                                                      |
 | **BraTS-PED 2024 (Pediatric)** | [Download](https://www.kaggle.com/datasets/srutorshibasuray/brats-ped-2024)                                                              |
 
-## Contributing
 
-We welcome contributions to TumourGen! Please read our contributing guidelines and submit pull requests for any improvements.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Citation
-
-If you use TumourGen in your research, please cite:
-
-```bibtex
-@misc{tumourgen2024,
-  title={TumourGen: A Comprehensive Deep Learning Pipeline for Brain Tumor Analysis},
-  author={Your Name},
-  year={2024},
-  howpublished={\url{https://github.com/yourusername/TumourGen}}
-}
 ```
 
 ## References
