@@ -1,0 +1,14 @@
+python>=3.10
+jupyter
+matplotlib
+nibabel
+numpy
+pandas
+scikit-learn
+torch>=2.0.0
+torchaudio
+torchvision
+nnunet
+monai
+SimpleITK
+tqdm
